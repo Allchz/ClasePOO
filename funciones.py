@@ -14,22 +14,63 @@ def Ingresar(lista,tema):
     lista.append(diccionario)
     print(diccionario)
 
-def Mostrar(tema, lista):
+def Mostrar(lista):
     print("----Mostrar--- ")
-    for tema in lista:
-        print("- Nombre :" + lista[tema])
+    print(lista)
+def Actualizar(tema,lista):
+    actualizar =input("Ingrese nombre de la "+" "+tema)
+    nuevovalor = input("Ingrese el nuevo nombre de la "+" "+tema)
 
-    
+    indice=0
+    for elemento in lista:
+        if elemento[tema] == actualizar:
+            elemento[tema] = nuevovalor
+        print(elemento)
+
+def Borrar(lista, tema):
+    borra=input(" ingrese el elemento que desea borrar: ")
+    indice=0
+    encontrado= True
+
+    for elemento in lista:
+        if elemento[tema]== borra:
+            encontrado=False
+            break
+        else:
+            indice= indice+1
+    if encontrado:
+        lista.remove(lista[indice])
+        print("Elemento Borrado")
+    else:
+        print("No existe")
 
 
-carreras = []
-seguir = True
-while seguir:
+
+
+carreras=[]
+
+while True:
     Menu("Carrera")
-    opcion = input("Ingrese su opcion: ")
+    opcion= input(" ingrese su opcion: ")
 
-    if opcion.isdi
+    if opcion.isdigit():
+        opcion=int(opcion)
 
+        print("-------------------------------\n")
+        if opcion==1:
+            Ingresar(carreras,"carrera")
+        elif opcion==2:
+            Mostrar(carreras)
+        elif opcion==3:
+            Actualizar("carrera",carreras)
+        elif opcion==4:
+            Borrar(carreras,"carrera")
+        elif opcion==5:
+          print("Nos vemos")
+          seguir= False
+        print("------------------\n")
+    else:
+        print(" Ingrese un numero valido por favor")
 
     
 
