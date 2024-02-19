@@ -1,10 +1,11 @@
 def validarentero():
-    variable=input("Ingrese la opcion:")
 
-    if variable.isdigit():
-        return int(variable)
-    else:
-        print("Ingrese un numero ")
+    while True:
+        variable = input("Ingrese la opcion:")
+        if variable.isdigit():
+            return int(variable)
+        else:
+            print("Ingrese un numero ")
 
 
 def menu():
@@ -14,32 +15,74 @@ def menu():
     print("3. Finalizado")
 
 def informacion():
-    orden={}
+    dicontrat={}
     print("--CONTRATO")
-    orden["Empleado"]= input("Ingrese el nombre")
-    orden["Metros de Aseao"]= input("Ingrese la cantidad de metros se aseo")
-    orden["Cliente"]=input(" Clinte (Nombre completo por favor)")
-    orden["DNI"]=input("Ingrese el DNI del cliente")
-    orden["Precio"]=input("Ingrese el precio")
+    dicontrat["Empleado"]= input("Ingrese el nombre ")
+    dicontrat["Metros de Aseao"]= input("Ingrese la cantidad de metros se aseo ")
+    dicontrat["Cliente"]=input(" Clinte (Nombre completo por favor) ")
+    dicontrat["DNI"]=input("Ingrese el DNI del cliente ")
+    dicontrat["Precio"]=input("Ingrese el precio ")
 
     menu()
     opcion= validarentero()
 
     if opcion==1:
-        orden["Estado Contrato"]="En Espera"
+        dicontrat["Estado Contrato"]="En Espera"
+        print("Contrato en Espera")
     elif opcion==2:
-        orden["Estado Contrato"] = "En Proceso"
+        dicontrat["Estado Contrato"] = "En Proceso"
+        print("Contrato en Proceso")
     elif opcion==3:
-        orden["Estado Contrato"] = "Finalizado"
+        dicontrat["Estado Contrato"] = "Finalizado"
+        print("Contrato Finalizado")
     else:
         print("Opcion invalida")
 
+    return dicontrat
 
+def menuvisualizar():
+    print("----VISUALIZAR CONTRATOS------")
+    print("1. Visualizar Todos los contratos")
+    print("2. Visualizar contrato en especficico")
 
-ordenes=[]
+contratos=[]
 
 while True:
-    informacion()
+
+    contrato = informacion()
+
+    contratos.append(contrato)
+
+    continuar= input("Desea agregar Mas contratos "
+                     "Si /No\n:  ")
+    if continuar.upper()=="NO":
+        break
+
+menuvisualizar()
+opcion= validarentero()
+
+if opcion==1:
+    for contrato in contratos:
+        print("-------------------------------------")
+        for x,y in contrato.items():
+            print(x,y)
+
+if opcion==2:
+    estado=input("Ingrese el estado del contrato: ")
+    encontrado= False
+
+    for contrato in contratos:
+        if contrato.get("Estado Contrato")==estado:
+            encontrado=True
+            print("Contrato encontrado")
+            for x, y in contrato.items():
+                print("-------------")
+                print(x,y)
+
+        else:
+            print("Contrato no encontrado")
+
+
 
 
 
