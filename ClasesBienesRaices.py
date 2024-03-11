@@ -96,4 +96,4 @@ class Cuarto:
             self.__electradomes=electrodomes
             self.__medidas=medidas
             self.__material=material
-            self
+            self.lavatrastos=LavaTrastos
