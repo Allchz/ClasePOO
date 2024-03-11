@@ -97,3 +97,8 @@ class Cuarto:
             self.__medidas=medidas
             self.__material=material
             self.lavatrastos=LavaTrastos
+
+        def getElectrodomes(self):
+            return self.__electradomes
+
+
